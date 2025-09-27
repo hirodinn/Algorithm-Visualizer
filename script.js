@@ -88,8 +88,28 @@ async function insertionSort() {
   }
   updateArrayBars();
 }
+//quick sort
 async function quickSort(start = 0, end = array.length - 1) {
   if (start >= end) return;
   let index = await partition(start, end);
   await Promise.all([quickSort(start, index - 1), quickSort(index + 1, end)]);
+}
+//partition
+async function partition(start, end) {
+  let pivot = array[end];
+  let i = start;
+  for (let j = start; j < end; j++) {
+    updateArrayBars([j, end]);
+    await sleep(delay);
+    if (array[j] < pivot) {
+      [array[i], array[j]] = [array[j], array[i]];
+      i++;
+      updateArrayBars([i, j]);
+      await sleep(delay);
+    }
+  }
+  [array[i], array[end]] = [array[end], array[i]];
+  updateArrayBars([], i);
+  await sleep(delay);
+  return i;
 }
