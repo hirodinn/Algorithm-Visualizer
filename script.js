@@ -88,3 +88,8 @@ async function insertionSort() {
   }
   updateArrayBars();
 }
+async function quickSort(start = 0, end = array.length - 1) {
+  if (start >= end) return;
+  let index = await partition(start, end);
+  await Promise.all([quickSort(start, index - 1), quickSort(index + 1, end)]);
+}
