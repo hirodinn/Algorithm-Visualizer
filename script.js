@@ -1,4 +1,4 @@
-const arr = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+let arr = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 const container = document.getElementById("container");
 
 function loadBars() {
@@ -64,3 +64,17 @@ function updateBars(f, s) {
 }
 
 bubbleSort();
+
+function generateArray() {
+  array = [];
+  arrayContainer.innerHTML = "";
+  let size = Number(sizeInput.value);
+  for (let i = 0; i < size; i++) {
+    let value = Math.floor(Math.random() * 300) + 10;
+    array.push(value);
+    let bar = document.createElement("div");
+    bar.classList.add("array-bar");
+    bar.style.height = `${value}px`;
+    arrayContainer.appendChild(bar);
+  }
+}
