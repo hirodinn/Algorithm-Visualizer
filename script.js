@@ -38,3 +38,20 @@ function updateArrayBars(highlightIndices = [], sortedIndex = -1) {
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+// Sorting Algorithms
+async function bubbleSort() {
+  for (let i = 0; i < array.length - 1; i++) {
+    for (let j = 0; j < array.length - i - 1; j++) {
+      updateArrayBars([j, j + 1]);
+      await sleep(delay);
+      if (array[j] > array[j + 1]) {
+        [array[j], array[j + 1]] = [array[j + 1], array[j]];
+        updateArrayBars([j, j + 1]);
+        await sleep(delay);
+      }
+    }
+    updateArrayBars([], array.length - i - 1);
+  }
+  updateArrayBars();
+}
