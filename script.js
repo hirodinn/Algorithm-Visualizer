@@ -40,6 +40,7 @@ function sleep(ms) {
 }
 
 // Sorting Algorithms
+//bubble sort
 async function bubbleSort() {
   for (let i = 0; i < array.length - 1; i++) {
     for (let j = 0; j < array.length - i - 1; j++) {
@@ -52,6 +53,21 @@ async function bubbleSort() {
       }
     }
     updateArrayBars([], array.length - i - 1);
+  }
+  updateArrayBars();
+}
+//selection sort
+async function selectionSort() {
+  for (let i = 0; i < array.length; i++) {
+    let minIndex = i;
+    for (let j = i + 1; j < array.length; j++) {
+      updateArrayBars([minIndex, j]);
+      await sleep(delay);
+      if (array[j] < array[minIndex]) minIndex = j;
+    }
+    [array[i], array[minIndex]] = [array[minIndex], array[i]];
+    updateArrayBars([], i);
+    await sleep(delay);
   }
   updateArrayBars();
 }
