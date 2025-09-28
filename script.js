@@ -113,3 +113,25 @@ async function partition(start, end) {
   await sleep(delay);
   return i;
 }
+generateBtn.addEventListener("click", generateArray);
+
+sortBtn.addEventListener("click", async () => {
+  delay = 101 - speedInput.value; // Higher speed = lower delay
+  switch (algorithmSelect.value) {
+    case "bubble":
+      await bubbleSort();
+      break;
+    case "selection":
+      await selectionSort();
+      break;
+    case "insertion":
+      await insertionSort();
+      break;
+    case "quick":
+      await quickSort();
+      updateArrayBars();
+      break;
+  }
+});
+
+window.onload = generateArray;
