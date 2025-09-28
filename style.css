@@ -24,3 +24,18 @@ input {
   border: none;
   border-radius: 4px;
 }
+button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+#array-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 400px;
+  border: 1px solid #555;
+  padding: 10px;
+  gap: 2px;
+  background-color: #2b2b3f;
+}
